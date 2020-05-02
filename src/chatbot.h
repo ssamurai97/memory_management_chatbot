@@ -26,13 +26,20 @@ public:
     ChatBot();                     // constructor WITHOUT memory allocation
     ChatBot(std::string filename); // constructor WITH memory allocation
     ~ChatBot();
+    ChatBot(const ChatBot& source);
+    ChatBot(ChatBot&& source) noexcept;
 
-    //// STUDENT CODE
-    ////
+    ChatBot& operator=(const ChatBot& source);
+    ChatBot& operator=(ChatBot&& source) noexcept;
+    
 
-    ////
-    //// EOF STUDENT CODE
 
+     template<typename T>
+     void Swap(T &a, T &b){ 
+         T temp = std::move(a);
+         a      = std::move(b);
+         b      = std::move(temp);
+     }
     // getters / setters
     void SetCurrentNode(GraphNode *node);
     void SetRootNode(GraphNode *rootNode) { _rootNode = rootNode; }

@@ -22,6 +22,10 @@ public:
     // constructor / desctructor
     GraphEdge(int id);
 
+    GraphEdge(const GraphEdge& )            = default;
+    GraphEdge(GraphEdge&& )                 = default;
+    GraphEdge& operator=(const GraphEdge& ) = default;
+    GraphEdge& operator=(GraphEdge&& )      = default;
     // getter / setter
     int GetID() { return _id; }
     void SetChildNode(GraphNode *childNode);
