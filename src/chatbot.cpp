@@ -62,7 +62,7 @@ ChatBot::ChatBot(ChatBot &&source) noexcept
 
 ChatBot &ChatBot::operator=(const ChatBot &source)
 {
-    std::cout << "ChatBot Copy Assignment\n";
+    std::cout << "ChatBot Copy Assignment Operator\n";
     if (this == &source)
     {
         return *this;
@@ -82,7 +82,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
 }
 ChatBot& ChatBot::operator=(ChatBot &&source) noexcept
 {
-    std::cout << "ChatBot Move Assignment\n";
+    std::cout << "ChatBot Move Assignment Operator\n";
     if( this == &source){
         return *this;
     }
