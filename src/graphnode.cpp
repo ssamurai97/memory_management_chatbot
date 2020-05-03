@@ -11,24 +11,6 @@ GraphNode::~GraphNode()
     
 }
 
-GraphNode::GraphNode(GraphNode&& source) noexcept
-: _childEdges{std::move(source._childEdges)}, _chatBot{source._chatBot},
-  _parentEdges{std::move(source._parentEdges)}, _id{source._id}, _answers{std::move(source._answers)}{
-      source._id = -1;
-  }
-
-GraphNode& GraphNode::operator=(GraphNode&& source) noexcept{
-    if(this == &source){
-        return *this;
-    }
-
-    _childEdges  = std::move(source._childEdges);
-    _parentEdges = std::move(source._parentEdges);
-    _id          = source._id;
-    _answers     = std::move(source._answers);
-
-    return *this;
-}
 void GraphNode::AddToken(std::string token)
 {
     _answers.push_back(token);

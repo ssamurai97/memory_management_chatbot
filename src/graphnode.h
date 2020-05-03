@@ -38,9 +38,6 @@ public:
      GraphNode(const GraphNode&) = delete;
       GraphNode& operator=(const GraphNode& ) = delete;
 
-    GraphNode(GraphNode&& ) noexcept;
-    GraphNode& operator=(GraphNode&& ) noexcept;
-
 
     // getter / setter
     int GetID() { return _id; }
