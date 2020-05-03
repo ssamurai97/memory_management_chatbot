@@ -10,7 +10,7 @@
 
 // constructor WITHOUT memory allocation
 ChatBot::ChatBot()
-{./
+{
     // invalidate data handles
     _image = nullptr;
     _chatLogic = nullptr;
@@ -54,7 +54,6 @@ ChatBot::ChatBot(ChatBot &&source) noexcept
       _chatLogic{source._chatLogic}
 {
     std::cout << "ChatBot Move Constructor\n";
-
     source._image       = nullptr;
     source._currentNode = nullptr;
     source._rootNode    = nullptr;
@@ -75,19 +74,24 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
     _currentNode = source._currentNode;
     _rootNode    = source._rootNode;
     _chatLogic   = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
     delete img;
 
     return *this;
 }
-ChatBot &ChatBot::operator=(ChatBot &&source) noexcept
+ChatBot& ChatBot::operator=(ChatBot &&source) noexcept
 {
     std::cout << "ChatBot Move Assignment\n";
+    if( this == &source){
+        return *this;
+    }
 
        _image       = source._image;
        _currentNode = source._currentNode;
        _rootNode    = source._rootNode;
        _chatLogic   = source._chatLogic;
+       _chatLogic->SetChatbotHandle(this);
 
        source._image       = nullptr;
        source._currentNode = nullptr;
